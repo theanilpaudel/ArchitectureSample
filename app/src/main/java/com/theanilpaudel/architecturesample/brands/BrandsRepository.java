@@ -45,42 +45,6 @@ public class BrandsRepository {
             }
         });
         return mutableLiveData;
-        /*Observable<Response<List<Brand>>> observable = brandsService.getBrands();
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io())
-                .subscribe(new Observer<Response<List<Brand>>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
 
-                    }
-
-                    @Override
-                    public void onNext(Response<List<Brand>> value) {
-                        int responseCode = value.code();
-                        if (responseCode == 403) {
-                            //error
-                        } else if (responseCode == 200) {
-                            Log.d(TAG, "onNext: "+value.body().get(0));
-                        } else {
-                            //error
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        if (e instanceof HttpException || e instanceof ConnectException) {
-                            //("No Internet Connection");
-                        } else if (e instanceof UnknownHostException || e instanceof SocketTimeoutException) {
-                            //("Couldn't connect to server");
-                        } else {
-                            //("Error Occured");
-                        }
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });*/
     }
 }

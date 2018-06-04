@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.theanilpaudel.architecturesample.brands.BrandsViewModel;
+import com.theanilpaudel.architecturesample.brands.BrandsViewModelFactory;
 import com.theanilpaudel.architecturesample.entity.Brand;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     @Inject
-    BrandsViewModel brandsViewModel;
+    BrandsViewModelFactory brandsViewModelFactory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         ((MainApplication)getApplication()).getNetComponent().inject(this);
 
-//        BrandsViewModel brandsViewModel = ViewModelProviders.of(this).get(BrandsViewModel.class);
-//        BrandsViewModel brandsViewModel = new BrandsViewModel()
+        BrandsViewModel brandsViewModel = ViewModelProviders.of(this,brandsViewModelFactory).get(BrandsViewModel.class);
         brandsViewModel.callService();
 
         LiveData<List<Brand>> brandsLiveData = brandsViewModel.getBrandsLiveData();
